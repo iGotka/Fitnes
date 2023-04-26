@@ -1,0 +1,36 @@
+﻿<Window x:Class="Fitness.Windowed.CourseRegWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fitness.Windowed"
+        mc:Ignorable="d"
+        Title="CourseRegWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <TextBlock>Тренер:</TextBlock>
+            <ComboBox x:Name="TrainerComboBox" DisplayMemberPath="TrainerName" SelectedValuePath="Id" SelectedValue="{Binding Trainer.TrainerName}"></ComboBox>
+            <TextBlock>Курс:</TextBlock>
+            <ComboBox x:Name="CourseComboBox" DisplayMemberPath="Title" SelectedValuePath="Id"  SelectedValue="{Binding Course.Title}" SelectionChanged="CourseComboBoxSelectionChanged"></ComboBox>
+            <TextBlock>Дата начала:</TextBlock>
+            <DatePicker SelectedDate="{Binding CreateDate}"></DatePicker>
+            <TextBlock>Стадия (завершён/в процессе):</TextBlock>
+            <CheckBox IsChecked="{Binding IsDone}">Завершён</CheckBox>
+            <TextBlock>Общее количество балов:</TextBlock>
+            <TextBox x:Name="TxtTotalPoint" Text="{Binding TotalPoint}"></TextBox>
+            <TextBlock>Сертификат:</TextBlock>
+            <StackPanel>
+                <Button x:Name="ImageSaveButton" HorizontalAlignment="Right" Content="сохран картинку" Click="ImageSaveButton_Click"></Button>
+                <Image Source="{Binding CertificateImage}" HorizontalAlignment="Left" ></Image>
+            </StackPanel>
+
+            <TextBlock>Коментарии:</TextBlock>
+            <TextBox Text="{Binding Comment}"></TextBox>
+        </UniformGrid>
+        <Button Content="Сохранить" Grid.Row="1" x:Name="SaveButton" Click="SaveButton_Click"></Button>
+    </Grid>
+</Window>
